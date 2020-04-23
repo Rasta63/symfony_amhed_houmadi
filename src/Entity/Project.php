@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 use Symfony\Component\Validator\Constraints as Assert;
@@ -17,6 +17,7 @@ class Project
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"projects","details"})
      */
     private $id;
 
@@ -24,27 +25,31 @@ class Project
      * @ORM\Column(type="string", length=255)
      * @Assert\NotNull
      * @Assert\NotBlank
+     * @Groups({"projects","details"})
      */
     private $name;
     /**
      * @ORM\Column(type="string", length=255)
-     * 
+     * @Groups({"projects","details"})
      */
     private $status;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"projects","details"})
      */
     private $startedAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"projects","details"})
      */
     private $endedAt;
 
     /**
      * @var array|ArrayCollection
      * @ORM\OneToMany(targetEntity="App\Entity\Task", mappedBy="project")
+     * @Groups({"details"})
      */
     private $tasks;
 

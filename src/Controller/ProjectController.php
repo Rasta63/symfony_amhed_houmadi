@@ -25,6 +25,7 @@ class ProjectController extends AbstractController
      */
     public function swhoProjects(Request $request,ProjectRepository $projectRepository)
     {
+        
         $project= new Project;
         $projectForm = $this->createForm(ProjectType::class,$project);
         $projectForm->handleRequest($request);
@@ -39,6 +40,7 @@ class ProjectController extends AbstractController
             'projects' => $projects
         ]);
     }
+
     /**
      * @Route("/projects/add", name="add_project")
      */

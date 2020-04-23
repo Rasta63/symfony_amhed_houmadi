@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -13,7 +14,8 @@ class Task
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer") 
+     * @Groups({"details"})
      */
     private $id;
 
@@ -21,6 +23,7 @@ class Task
      * @ORM\Column(type="string", length=255)
      * @Assert\NotNull
      * @Assert\NotBlank
+     * @Groups({"details"})
      */
     private $title;
 
@@ -28,11 +31,13 @@ class Task
      * @ORM\Column(type="text")
      * @Assert\NotNull
      * @Assert\NotBlank
+     * @Groups({"details"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"details"})
      */
     private $createdAt;
 
