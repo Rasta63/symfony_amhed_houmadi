@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TaskController!
+{% endblock %}
+
+{% block body %}
+	<div class="container ">
+		<div class="row text-center">
+			<div class="col-12">
+				<h1>Ajout d'une tache du projet {{ project.name }}</h1>
+			</div>
+            <div class="col-sm-6 offset-sm-3">
+                {{ form(taskForm, {'action' : path('project_detail', {'id': project.id } )}) }}
+            </div>
+		</div>
+
+	</div>
+{% endblock %}

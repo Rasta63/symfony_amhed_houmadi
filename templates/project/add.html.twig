@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}
+	Inscription
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div  class=" w-100 mx-auto">
+			{{ form(projectForm,  {'action' : path('project_list')}) }}
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Projet
+	{{project.id}}
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+            <div class="col-sm-6">
+                <h1>Project : {{ project.name }}</h1>
+                <p>Créé le  : {{ project.startedAt | date('d/m/Y') }}</p>
+                <p>Nombre de taches  : {{ tasks | length }}</p>
+            </div>
+            {% if project.status != 'Terminé' %}
+                <div class="col-sm-6">
+                    {{ form(statusForm) }}
+                </div>
+            {% else %}
+                <h2 class="my-auto" >Projet Terminé le {{ project.endedAt | date('d/m/Y') }} </h2>
+           {% endif %}
+		</div>
+        <div class="row">
+        {% if project.status != 'Terminé' %}
+            <div class="col-12"> 
+                <a href=" {{ path('add_task',{'id': project.id }) }} " class ="btn btn-primary" >Ajouter une tache</a>
+            </div>
+        {% endif %}
+            <div class="col-12">
+                <table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">Nom de la tache</th>
+					<th scope="col">Déscription</th>
+					<th scope="col">Ajouté le</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for task in tasks %}
+					<tr>
+						<td>{{ task.title }}</td>
+						<td>{{ task.description }}</td>
+						<td>{{ task.createdAt | date('d/m/Y') }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+            </div>
+        </div>
+	</div>
+{% endblock %}
